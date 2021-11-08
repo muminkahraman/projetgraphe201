@@ -20,13 +20,24 @@ def rechercheDeGrapheDansFichier(repertoire, choixFichier):
         lignes[i] = lignes[i].split(";")
     for i in range(len(lignes)-1):
         lignes[i][-1] = lignes[i][-1].replace('\n', '')
+    print (lignes)
     return lignes
 
 def afficherMatrice(matrice):
-    for row in matrice:
-        for val in row:
-            print'{:4}'.format(val),
-        print
+    maxlen = 0
+    for ligne in matrice:
+        if (len(max(ligne, key=len)) > maxlen):
+            maxlen = len(max(ligne, key=len))+1
+        else:
+            pass
+    for ligne in matrice:
+        ligneStr =''
+        for elem in ligne:
+            ajout = elem + ' '
+            while (len(ajout) < maxlen):
+                ajout += ' '
+            ligneStr += ajout
+        print(ligneStr[:-1])
 
 
 #--------------PROGRAMME PRINCIPAL----------------------------------
