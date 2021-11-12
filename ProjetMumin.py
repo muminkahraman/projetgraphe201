@@ -9,12 +9,12 @@ def choixDuFichier (cheminDuRepertoire) :
         incr += 1
         print(incr, "-", i)
     choix = int(input('entrez le numéro du fichiez que vous voulez choisir : ')) - 1
-    return choix;
+    return choix
 
 
 def rechercheDeGrapheDansFichier(repertoire, choixFichier, savedMatrixes):
     list = list = os.listdir(repertoire)
-    nomFichier = list[choixFichier];
+    nomFichier = list[choixFichier]
     fichier = open(repertoire + '/' + nomFichier, 'r')
     lignes = fichier.readlines()
     for i in range (len(lignes)):
@@ -51,7 +51,7 @@ def saveMatriceDansMemoire(matrice, savedMatrixes):
     choixSave = input("entrez votre choix : ")
     if(choixSave == "1"):
         savedMatrixes.append(matrice)
-        print("Matrice enregistrée dans la mémoire du programme avec succes")
+        print("Matrice enregistrée dans la mémoire du programme en tant que matrice numero " + str(savedMatrixes.index(matrice))+ "\n")
     else:
         print("Matrice non enregistrée")
 
@@ -89,5 +89,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-else :
+else:
     pass
