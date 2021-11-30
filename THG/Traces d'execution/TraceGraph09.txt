@@ -1,0 +1,106 @@
+Choisissez le graph a traiter : 
+1) Graph [Graph01] =<S,A> / Cardinalité(S) = 4 / Cardinalité(A) = 5.
+2) Graph [Graph02] =<S,A> / Cardinalité(S) = 4 / Cardinalité(A) = 5.
+3) Graph [Graph03] =<S,A> / Cardinalité(S) = 4 / Cardinalité(A) = 6.
+4) Graph [Graph04] =<S,A> / Cardinalité(S) = 4 / Cardinalité(A) = 6.
+5) Graph [Graph05] =<S,A> / Cardinalité(S) = 4 / Cardinalité(A) = 8.
+6) Graph [Graph06] =<S,A> / Cardinalité(S) = 4 / Cardinalité(A) = 9.
+7) Graph [Graph07] =<S,A> / Cardinalité(S) = 7 / Cardinalité(A) = 13.
+8) Graph [Graph08] =<S,A> / Cardinalité(S) = 5 / Cardinalité(A) = 7.
+9) Graph [Graph09] =<S,A> / Cardinalité(S) = 5 / Cardinalité(A) = 8.
+10) Graph [Graph10] =<S,A> / Cardinalité(S) = 5 / Cardinalité(A) = 5.
+11) Graph [Graph11] =<S,A> / Cardinalité(S) = 5 / Cardinalité(A) = 8.
+12) Graph [Graph12] =<S,A> / Cardinalité(S) = 8 / Cardinalité(A) = 12.
+13) Graph [Graph13] =<S,A> / Cardinalité(S) = 8 / Cardinalité(A) = 12.
+         [0] Pour quitter.
+           Votre choix : 9
+Sommet    1        2        3        4        5     
+ 1 :   [  0    ][  1.0  ][  2.0  ][  1.0  ][  inf  ]
+ 2 :   [  inf  ][  2.0  ][  inf  ][  inf  ][  inf  ]
+ 3 :   [  inf  ][  inf  ][  0    ][  -2.0 ][  1.0  ]
+ 4 :   [  inf  ][  inf  ][  inf  ][  0    ][  4.0  ]
+ 5 :   [  inf  ][  3.0  ][  inf  ][  inf  ][  0    ]
+
+  Cliquer sur Enter pour commencer le traitement :
+
+        Matrice des distances les plus court entre chaque sommet iteration 0 :
+Sommet    1        2        3        4        5
+ 1 :   [  0    ][  1.0  ][  2.0  ][  1.0  ][  inf  ]
+ 2 :   [  inf  ][  0    ][  inf  ][  inf  ][  inf  ]
+ 3 :   [  inf  ][  inf  ][  0    ][  -2.0 ][  1.0  ]
+ 4 :   [  inf  ][  inf  ][  inf  ][  0    ][  4.0  ]
+ 5 :   [  inf  ][  3.0  ][  inf  ][  inf  ][  0    ]
+
+        Matrice des successeurs iteration 0 :
+Sommet    1        2        3        4        5
+ 1 :   [  0    ][  1    ][  2    ][  3    ][  None ]
+ 2 :   [  None ][  1    ][  None ][  None ][  None ]
+ 3 :   [  None ][  None ][  2    ][  3    ][  4    ]
+ 4 :   [  None ][  None ][  None ][  3    ][  4    ]
+ 5 :   [  None ][  1    ][  None ][  None ][  4    ]
+
+        Matrice des distances les plus court entre chaque sommet iteration 1 :
+Sommet    1        2        3        4        5
+ 1 :   [  0    ][  1.0  ][  2.0  ][  1.0  ][  inf  ]
+ 2 :   [  inf  ][  0    ][  inf  ][  inf  ][  inf  ]
+ 3 :   [  inf  ][  inf  ][  0    ][  -2.0 ][  1.0  ]
+ 4 :   [  inf  ][  inf  ][  inf  ][  0    ][  4.0  ]
+ 5 :   [  inf  ][  3.0  ][  inf  ][  inf  ][  0    ]
+
+        Matrice des successeurs iteration 1 :
+Sommet    1        2        3        4        5
+ 1 :   [  0    ][  1    ][  2    ][  3    ][  None ]
+ 2 :   [  None ][  1    ][  None ][  None ][  None ]
+ 3 :   [  None ][  None ][  2    ][  3    ][  4    ]
+ 4 :   [  None ][  None ][  None ][  3    ][  4    ]
+ 5 :   [  None ][  1    ][  None ][  None ][  4    ]
+
+        Matrice des distances les plus court entre chaque sommet iteration 2 :
+Sommet    1        2        3        4        5
+ 1 :   [  0    ][  1.0  ][  2.0  ][  0.0  ][  3.0  ]
+ 2 :   [  inf  ][  0    ][  inf  ][  inf  ][  inf  ]
+ 3 :   [  inf  ][  inf  ][  0    ][  -2.0 ][  1.0  ]
+ 4 :   [  inf  ][  inf  ][  inf  ][  0    ][  4.0  ]
+ 5 :   [  inf  ][  3.0  ][  inf  ][  inf  ][  0    ]
+
+        Matrice des successeurs iteration 2 :
+Sommet    1        2        3        4        5
+ 1 :   [  0    ][  1    ][  2    ][  2    ][  2    ]
+ 2 :   [  None ][  1    ][  None ][  None ][  None ]
+ 3 :   [  None ][  None ][  2    ][  3    ][  4    ]
+ 4 :   [  None ][  None ][  None ][  3    ][  4    ]
+ 5 :   [  None ][  1    ][  None ][  None ][  4    ]
+
+        Matrice des distances les plus court entre chaque sommet iteration 3 :
+Sommet    1        2        3        4        5
+ 1 :   [  0    ][  1.0  ][  2.0  ][  0.0  ][  3.0  ]
+ 2 :   [  inf  ][  0    ][  inf  ][  inf  ][  inf  ]
+ 3 :   [  inf  ][  inf  ][  0    ][  -2.0 ][  1.0  ]
+ 4 :   [  inf  ][  inf  ][  inf  ][  0    ][  4.0  ]
+ 5 :   [  inf  ][  3.0  ][  inf  ][  inf  ][  0    ]
+
+        Matrice des successeurs iteration 3 :
+Sommet    1        2        3        4        5
+ 1 :   [  0    ][  1    ][  2    ][  2    ][  2    ]
+ 2 :   [  None ][  1    ][  None ][  None ][  None ]
+ 3 :   [  None ][  None ][  2    ][  3    ][  4    ]
+ 4 :   [  None ][  None ][  None ][  3    ][  4    ]
+ 5 :   [  None ][  1    ][  None ][  None ][  4    ]
+
+        Matrice des distances les plus court entre chaque sommet iteration 4 :
+Sommet    1        2        3        4        5
+ 1 :   [  0    ][  1.0  ][  2.0  ][  0.0  ][  3.0  ]
+ 2 :   [  inf  ][  0    ][  inf  ][  inf  ][  inf  ]
+ 3 :   [  inf  ][  4.0  ][  0    ][  -2.0 ][  1.0  ]
+ 4 :   [  inf  ][  7.0  ][  inf  ][  0    ][  4.0  ]
+ 5 :   [  inf  ][  3.0  ][  inf  ][  inf  ][  0    ]
+
+        Matrice des successeurs iteration 4 :
+Sommet    1        2        3        4        5
+ 1 :   [  0    ][  1    ][  2    ][  2    ][  2    ]
+ 2 :   [  None ][  1    ][  None ][  None ][  None ]
+ 3 :   [  None ][  4    ][  2    ][  3    ][  4    ]
+ 4 :   [  None ][  4    ][  None ][  3    ][  4    ]
+ 5 :   [  None ][  1    ][  None ][  None ][  4    ]
+
+  Choisisser le sommet de depart entre 1 et 5 [ou faite rentrer (0) pour choisir un autre graph] :
