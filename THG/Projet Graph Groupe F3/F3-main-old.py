@@ -1,8 +1,10 @@
 import os
 
+#Récupère le répertoire de tous les graphiques situés dans le répertoire des programmes.
+dir = os.path.split(__file__)[0]
 
-
-
+Extentions = ['.txt','.TXT']
+inf=float('inf')
 
 #Lit un graphique dans le répertoire en utilisant son nom de fichier
 def readGraph(filedir):
@@ -65,34 +67,28 @@ def actionSommet():
     return action
 
 #fonction d'affichage des resultat selon l'action choisie            
-def traitementSommet(graph, sd, a, nxt, dist):
+def traitementSommet(graph, sd, a, nxt):
     if(a == 1):
         sommetArrivé = choixSommet(graph, "le sommet d'arrive") - 1
-        if(sommetArrivé == -1): return
-        if (get_path(nxt,sd,sommetArrivé, dist)==None):
+        if (get_path(nxt,sd,sommetArrivé)==None):
             print("Aucun chemain disponible entre le sommet " + str(sd+1) + " et le sommet " + str(sommetArrivé+1))
         else :
             print("le chemain le plus court entre le sommet " + str(sd+1) + " et le sommet " + str(sommetArrivé+1) + " est : ", end='')
-            pathh, cout =  get_path(nxt,sd,sommetArrivé, dist)
-            print(pathh, end='')
-            print(" de longeur : " + str(cout))
+            print(get_path(nxt,sd,sommetArrivé))
     else : 
         if (a == 2):
             for i in range(graph[1]):
-                if (get_path(nxt,sd,i, dist)==None):
+                if (get_path(nxt,sd,i)==None):
                     print("Aucun chemain disponible entre le sommet " + str(sd+1) + " et le sommet " + str(i+1))
                 else :
                     print("le chemain le plus court entre le sommet " + str(sd+1) + " et le sommet " + str(i+1) + " est : ", end="")
-                    pathh, cout =  get_path(nxt,sd,i, dist)
-                    print(pathh, end='')
-                    print(" de longeur : " + str(cout))
+                    print(get_path(nxt,sd,i))
         else : print("\t\tChoisissez un nouveau sommet : ")
         
-
+graphs = []
     
 #Implémentation de l'algorithme de Floyd Warshall
 def floydWarshall(graph):
-    inf = float('inf')
     size = graph[1]
     mat = graph[2]
     negative = False
@@ -131,64 +127,47 @@ def floydWarshall(graph):
     return dist, nxt, negative
 
 #Utilise la matrice des successeurs pour construire le chemain le plus court entre 2 sommets
-def get_path(nxt, u, v, dist):
+def get_path(nxt, u, v):
     if nxt[u][v] is None:
         return None
     path = [u+1]
-    cout = dist[u][v]
+    cout = 0
     while u != v:
         u = nxt[u][v]
+        cout += dist[u][v]
         path.append(u+1)
-    return path,cout
+    return path
 
+#Utilisation de readGraph pour charger tout les graphes en memoire d'apres leur fichier
+for file in os.listdir(dir):
+    if(file[-4:] in Extentions):
+        nbArc, size, mat = readGraph(dir+'/'+file)
+        graphs.append((nbArc, size, mat, file))
+        
+val = len(graphs)
 
-def main():
-    print("#####################################################################")
-    print("#                          Projet Graphe                            #")
-    print("#####################################################################\n")
-
-    # Récupère le répertoire de tous les graphiques situés dans le répertoire des programmes.
-    dir = os.path.split(__file__)[0]
-    Extentions = ['.txt', '.TXT']
-    graphs = []
-
-    # Utilisation de readGraph pour charger tout les graphes en memoire d'apres leur fichier
-    for file in os.listdir(dir):
-        if (file[-4:] in Extentions):
-            nbArc, size, mat = readGraph(dir + '/' + file)
-            graphs.append((nbArc, size, mat, file))
-    val = len(graphs)
-    # Boucle pour continuer a traiter n graphes tantque l'utilisateur ne choisis pas de quitter
-    while (val > 0 and val <= len(graphs)):
-        val = choixGraph(graphs)
-        if (val == 0):
-            print("\tFin du programme")
-            break
-        if (val > 0 and val <= len(graphs)):
-            G = graphs[val - 1]
-            printGraph(G)
-            input("\n  Cliquer sur Enter pour commencer le traitement : ")
-            dist, nxt, negative = floydWarshall(G)
-            if (negative):
-                input("\n  Un cycle absorbant a été détecté dans le graph, arret de l'algorithme\n\t"
-                      + "   Cliquer sur enter pour choisir un autre graph : ")
-            else:
-                sommetDepart = choixSommet(G, "le sommet de depart") - 1
-                if (sommetDepart != -1):
-                    while (sommetDepart > -1 and sommetDepart < G[1]):
-                        action = actionSommet()
-                        while action != 0:
-                            traitementSommet(G, sommetDepart, action, nxt, dist)
-                            input("\nCliquer sur Enter pour revenir aux actions possibles sur le sommet " + str(
-                                sommetDepart + 1) + " : ")
-                            action = actionSommet()
-                        sommetDepart = choixSommet(G, "un nouveau sommet de depart") - 1
-                input("\nCliquer sur Enter pour choisir un autre graph : ")
+#Boucle pour continuer a traiter n graphes tantque l'utilisateur ne choisis pas de quitter
+while (val > 0 and val <= len(graphs)): 
+    val = choixGraph(graphs)
+    if(val == 0):
+        print("\tFin du programme")
+        break
+    if(val > 0 and val <= len(graphs)):
+        G=graphs[val-1]
+        printGraph(G)
+        input("\n  Cliquer sur Enter pour commencer le traitement : ")
+        dist, nxt, negative = floydWarshall(G)
+        if(negative):input("\n  Un cycle absorbant a été détecté dans le graph, arret de l'algorithme\n\t"
+                           +"   Cliquer sur enter pour choisir un autre graph : ")
         else:
-            val = len(graphs)
-
-
-if __name__ == "__main__":
-    main()
-else:
-    main()
+            sommetDepart=choixSommet(G,"le sommet de depart")-1
+            if(sommetDepart != -1):
+                while (sommetDepart> -1 and sommetDepart<G[1]):
+                    action = actionSommet()
+                    while action != 0:
+                        traitementSommet(G, sommetDepart, action, nxt)
+                        input("\nCliquer sur Enter pour revenir aux actions possibles sur le sommet " + str(sommetDepart + 1) + " : ")
+                        action = actionSommet()
+                    sommetDepart=choixSommet(G, "un nouveau sommet de depart")-1
+            input("\nCliquer sur Enter pour choisir un autre graph : ")
+    else: val = len(graphs)
